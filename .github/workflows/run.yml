@@ -5,8 +5,9 @@ on:
   #  branches: [ main ]
   #pull_request:
   #  branches: [ main ]
+  # 注意这里写的是0时区，比北京时间少8个小时
   schedule:
-    - cron: '9 21 * * *'
+    - cron: '9 15 * * *'
   watch:
     types: started
   workflow_dispatch:
