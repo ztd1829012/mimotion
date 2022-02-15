@@ -7,7 +7,7 @@ on:
   #  branches: [ main ]
   # 注意这里写的是0时区，比北京时间少8个小时
   schedule:
-    - cron: '9 0 * * *'
+    - cron: '56 23 * * *'
   watch:
     types: started
   workflow_dispatch:
