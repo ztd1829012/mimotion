@@ -63,8 +63,8 @@ headers = {'User-Agent': 'MiFit/5.3.0 (iPhone; iOS 14.7.1; Scale/3.00)'}
 # 
 def send(link):
     # xxxxxxxxx表示邮箱服务授权码
-    data_1 = ['843341161@qq.com', 'wwvpyhzmjsbfbcch', '843341161@qq.com', 'smtp.qq.com']
-    #data_1 = ['18290126150@163.com', 'QSVSSBUCHNXWEAZA', '843341161@qq.com', 'smtp.163.com']
+    data_1 = [sys.argv[14], sys.argv[15], sys.argv[16], sys.argv[17]]
+
     from_addr = data_1[0]
     password = data_1[1]
     to_addr = data_1[2]
