@@ -54,6 +54,43 @@ time_bj = datetime.datetime.today() + datetime.timedelta(hours=8)
 now = time_bj.strftime("%Y-%m-%d %H:%M:%S")
 headers = {'User-Agent': 'MiFit/5.3.0 (iPhone; iOS 14.7.1; Scale/3.00)'}
 
+# 
+def send(link):
+    # xxxxxxxxx表示邮箱服务授权码
+    data_1 = ['843341161@qq.com', 'wwvpyhzmjsbfbcch', '843341161@qq.com', 'smtp.qq.com']
+    #data_1 = ['18290126150@163.com', 'QSVSSBUCHNXWEAZA', '843341161@qq.com', 'smtp.163.com']
+    from_addr = data_1[0]
+    password = data_1[1]
+    to_addr = data_1[2]
+    smtp_server = data_1[3]
+
+    msg = MIMEMultipart('alternative')
+    msg['From'] = from_addr
+    msg['To'] = to_addr
+    msg['Subject'] = r'小说更新！！！'
+    html = """
+        <html> 
+          <head></head> 
+          <body> 
+            <p>最新章节在此：<br> 
+               点击链接立即阅读：<br> 
+                """ + link + """<br>
+            </p> 
+          </body> 
+        </html> 
+    """
+    part1 = MIMEText(html, 'html')
+    msg.attach(part1)
+    try:
+        server = smtplib.SMTP_SSL(smtp_server, 465)
+        # server.set_debuglevel(1)
+        server.login(from_addr, password)
+        server.sendmail(from_addr, to_addr, msg.as_string())
+        logging.info('success')
+    except:
+        logging.info(" sending email failed")
+    finally:
+        server.quit()
 
 #获取区域天气情况
 def getWeather():
@@ -264,7 +301,8 @@ def main(_user,_passwd,min_1, max_1):
     response = requests.post(url, data=data, headers=head).json()
     # print(response)
     result = f"[{now}]\n账号：{user[:3]}****{user[7:]}\n修改步数（{step}）[" + response['message'] + "]\n"
-    #print(result)
+    print(result)
+    send(result+"\n鹅厂运动: \nhttps://fm.m.tencent.com/an:mhr/sports/?from=wxmenu")
     return result
 
 
