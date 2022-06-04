@@ -96,7 +96,7 @@ def getBeijinTime():
     type = ""
     hea = {'User-Agent': 'Mozilla/5.0'}
     url = r'http://time1909.beijing-time.org/time.asp'
-    if open_get_weather:
+    if open_get_weather == "True":
         getWeather()
     r = requests.get(url=url, headers=hea)
     if r.status_code == 200:
@@ -325,7 +325,7 @@ def get_access_token():
 
 
 def run(msg):
-    if position:
+    if position == "true":
         data = {
             "touser": touser,
             "toparty": toparty,
