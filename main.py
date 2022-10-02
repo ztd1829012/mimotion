@@ -62,7 +62,7 @@ def getWeather():
         return
     else:
         global K, type
-        url = 'http://wthrcdn.etouch.cn/weather_mini?city=' + area
+        url = 'http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&needMoreData=true&pageNo=1&pageSize=7&city=上海'+ area
         hea = {'User-Agent': 'Mozilla/5.0'}
         r = requests.get(url=url, headers=hea)
         if r.status_code == 200:
